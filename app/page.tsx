@@ -1,10 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Mail, ChevronDown, Code2, Rocket, Palette, Globe, Briefcase, FileCode } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import Threads from './Threads';
 
 export default function Portfolio() {
+  const [loading, setLoading] = useState(true);
+  const [isImageFullscreen, setIsImageFullscreen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const sectionVariants: any = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -33,9 +46,74 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500/30 font-sans">
+    <>
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 tracking-widest"
+            >
+              CK
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isImageFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsImageFullscreen(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full h-full max-w-6xl max-h-[85vh] rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src="/Bir başlık ekleyin.png"
+                alt="Bozdoğan Roket Takımı Fullscreen"
+                fill
+                className="object-contain"
+              />
+              <button 
+                onClick={() => setIsImageFullscreen(false)}
+                className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all text-xl"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className={`min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500/30 font-sans ${loading ? 'overflow-hidden h-screen' : ''}`}>
       {/* 1. HERO SECTION */}
       <section className="relative flex flex-col items-center justify-center min-h-screen p-8 overflow-hidden">
+        {/* Threads Background */}
+        <div className="absolute inset-0 z-0 pointer-events-auto" style={{ width: '100%', height: '100%' }}>
+          <Threads
+            amplitude={1}
+            distance={0}
+            enableMouseInteraction
+          />
+        </div>
+
         {/* Background gradient effects */}
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 mix-blend-screen" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] -z-10 mix-blend-screen" />
@@ -115,6 +193,47 @@ export default function Portfolio() {
                   {skill}
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 2.5. ROKET TAKIMI SECTION */}
+      <section id="roket" className="py-32 px-8 relative bg-white/[0.01]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
+            <div className="w-full md:w-1/2">
+              <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-slate-100">Bozdoğan Roket Takımı</h2>
+              <div className="w-20 h-1 bg-red-600 mb-8 rounded-full" />
+              <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                Bozdoğan Roket Takımı bünyesinde yer alarak havacılık ve uzay teknolojileri alanında önemli projelere imza attık. Takım içindeki görevim ve çalışmalarım sayesinde mühendislik pratiğimi ve takım çalışması becerilerimi geliştirdim.
+              </p>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Yüksek irtifa roket sistemleri tasarımı, aviyonik sistemler ve yazılım geliştirme süreçlerinde aktif rol alarak, vizyonumu uzaya taşıyorum.
+              </p>
+            </div>
+            <div 
+              onClick={() => setIsImageFullscreen(true)}
+              className="w-full md:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-zoom-in group"
+            >
+              <Image 
+                src="/Bir başlık ekleyin.png" 
+                alt="Bozdoğan Roket Takımı" 
+                width={600} 
+                height={400} 
+                className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-500 pointer-events-none">
+                  Büyütmek için tıkla
+                </span>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -211,6 +330,7 @@ export default function Portfolio() {
           </motion.p>
         </motion.div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

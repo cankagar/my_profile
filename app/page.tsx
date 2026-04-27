@@ -5,12 +5,12 @@ import { Mail, ChevronDown, Code2, Rocket, Palette, Globe, Briefcase, FileCode }
 import Link from "next/link";
 
 export default function Portfolio() {
-  const sectionVariants = {
+  const sectionVariants: any = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +20,7 @@ export default function Portfolio() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };

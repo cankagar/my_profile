@@ -106,7 +106,7 @@ export default function Portfolio() {
                 fill
                 className="object-contain"
               />
-              <button 
+              <button
                 onClick={() => setIsImageFullscreen(false)}
                 className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all text-xl"
               >
@@ -118,288 +118,287 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <div className={`min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500/30 font-sans ${loading ? 'overflow-hidden h-screen' : ''}`}>
-      {/* 1. HERO SECTION */}
-      <section className="relative flex flex-col items-center justify-center min-h-screen p-8 overflow-hidden">
-        {/* Threads Background */}
-        <div className="absolute inset-0 z-0 pointer-events-auto" style={{ width: '100%', height: '100%' }}>
-          <Threads
-            amplitude={1}
-            distance={0}
-            enableMouseInteraction
-          />
-        </div>
-
-        {/* Background gradient effects */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] -z-10 mix-blend-screen" />
-
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="z-10 text-center max-w-3xl"
-        >
-          <motion.div variants={itemVariants} className="mb-6 inline-block">
-            <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium tracking-wide text-blue-300 backdrop-blur-md">
-              Merhaba, ben Can Kagar 👋
-            </span>
-          </motion.div>
-
-          <motion.h1 variants={itemVariants} className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tighter mb-8 font-sans bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
-            Cn KGR
-          </motion.h1>
-
-          <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Modern web teknolojileri ile kullanıcı odaklı, etkileşimli ve estetik dijital deneyimler yaratıyorum. Her pikselde mükemmelliği hedefliyorum.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="#contact" className="px-8 py-4 w-full sm:w-auto rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1">
-              İletişime Geç
-            </a>
-            <a href="#projects" className="px-8 py-4 w-full sm:w-auto rounded-full bg-white/5 border border-white/10 hover:bg-white/10 font-semibold transition-all hover:-translate-y-1 backdrop-blur-md">
-              Projeleri Gör
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 animate-bounce"
-        >
-          <a href="#about" aria-label="Aşağı kaydır">
-            <ChevronDown className="w-8 h-8 text-slate-500 hover:text-slate-300 transition-colors" />
-          </a>
-        </motion.div>
-      </section>
-
-      {/* 2. ABOUT SECTION */}
-      <section id="about" className="py-32 px-8 relative">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="w-full md:w-1/2">
-              <h2 className="text-3xl sm:text-5xl font-bold mb-6">Hakkımda : </h2>
-              <div className="w-20 h-1 bg-blue-600 mb-8 rounded-full" />
-              <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                Yazılım dünyasına olan tutkum, her gün yeni bir şeyler öğrenmemi ve kendimi geliştirmemi sağlıyor. Karmaşık problemleri basit ve zarif çözümlere dönüştürmeyi seviyorum.
-              </p>
-              <p className="text-slate-400 text-lg leading-relaxed">
-                Modern frontend framework&apos;leri ve animasyon kütüphaneleri kullanarak sıradan siteleri akılda kalıcı deneyimlere çevirmek en büyük uzmanlık alanım. Her zaman daha iyisini üretmek için çalışıyorum.
-              </p>
-            </div>
-            <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
-              {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js'].map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.4 }}
-                  className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center font-medium hover:bg-white/10 transition-colors cursor-default"
-                >
-                  {skill}
-                </motion.div>
-              ))}
-            </div>
+        {/* 1. HERO SECTION */}
+        <section className="relative flex flex-col items-center justify-center min-h-screen p-8 overflow-hidden">
+          {/* Threads Background */}
+          <div className="absolute inset-0 z-0 pointer-events-auto" style={{ width: '100%', height: '100%' }}>
+            <Threads
+              amplitude={1}
+              distance={0}
+              enableMouseInteraction
+            />
           </div>
-        </motion.div>
-      </section>
 
-      {/* 2.5. ROKET TAKIMI SECTION */}
-      <section id="roket" className="py-32 px-8 relative bg-white/[0.01]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
-            <div className="w-full md:w-1/2">
-              <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-slate-100">Bozdoğan Roket Takımı</h2>
-              <div className="w-20 h-1 bg-red-600 mb-8 rounded-full" />
-              <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                Bozdoğan Roket Takımı bünyesinde yer alarak havacılık ve uzay teknolojileri alanında önemli projelere imza attık. Takım içindeki görevim ve çalışmalarım sayesinde mühendislik pratiğimi ve takım çalışması becerilerimi geliştirdim.
-              </p>
-              <p className="text-slate-400 text-lg leading-relaxed">
-                Yüksek irtifa roket sistemleri tasarımı, aviyonik sistemler ve yazılım geliştirme süreçlerinde aktif rol alarak, vizyonumu uzaya taşıyorum.
-              </p>
-            </div>
-            <div 
-              onClick={() => setIsImageFullscreen(true)}
-              className="w-full md:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-zoom-in group"
-            >
-              <Image 
-                src="/Bir başlık ekleyin.png" 
-                alt="Bozdoğan Roket Takımı" 
-                width={600} 
-                height={400} 
-                className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-500 pointer-events-none">
-                  Büyütmek için tıkla
-                </span>
+          {/* Background gradient effects */}
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 mix-blend-screen" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] -z-10 mix-blend-screen" />
+
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="z-10 text-center max-w-3xl"
+          >
+            <motion.div variants={itemVariants} className="mb-6 inline-block">
+              <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium tracking-wide text-blue-300 backdrop-blur-md">
+                Merhaba, ben Can Kagar 👋
+              </span>
+            </motion.div>
+
+            <motion.h1 variants={itemVariants} className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tighter mb-8 font-sans bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
+              Cn KGR
+            </motion.h1>
+
+            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Modern web teknolojileri ile kullanıcı odaklı, etkileşimli ve estetik dijital deneyimler yaratıyorum. Her pikselde mükemmelliği hedefliyorum.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a href="#contact" className="px-8 py-4 w-full sm:w-auto rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1">
+                İletişime Geç
+              </a>
+              <a href="#projects" className="px-8 py-4 w-full sm:w-auto rounded-full bg-white/5 border border-white/10 hover:bg-white/10 font-semibold transition-all hover:-translate-y-1 backdrop-blur-md">
+                Projeleri Gör
+              </a>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-10 animate-bounce"
+          >
+            <a href="#about" aria-label="Aşağı kaydır">
+              <ChevronDown className="w-8 h-8 text-slate-500 hover:text-slate-300 transition-colors" />
+            </a>
+          </motion.div>
+        </section>
+
+        {/* 2. ABOUT SECTION */}
+        <section id="about" className="py-32 px-8 relative">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="flex flex-col md:flex-row gap-16 items-center">
+              <div className="w-full md:w-1/2">
+                <h2 className="text-3xl sm:text-5xl font-bold mb-6">Hakkımda : </h2>
+                <div className="w-20 h-1 bg-blue-600 mb-8 rounded-full" />
+                <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                  Yazılım dünyasına olan tutkum, her gün yeni bir şeyler öğrenmemi ve kendimi geliştirmemi sağlıyor. Karmaşık problemleri basit ve zarif çözümlere dönüştürmeyi seviyorum.
+                </p>
+                <p className="text-slate-400 text-lg leading-relaxed">
+                  Modern frontend framework&apos;leri ve animasyon kütüphaneleri kullanarak sıradan siteleri akılda kalıcı deneyimlere çevirmek en büyük uzmanlık alanım. Her zaman daha iyisini üretmek için çalışıyorum.
+                </p>
+              </div>
+              <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js'].map((skill, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center font-medium hover:bg-white/10 transition-colors cursor-default"
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </div>
-        </motion.div>
-      </section>
+          </motion.div>
+        </section>
 
-      {/* 3. PROJECTS SECTION */}
-      <section id="projects" className="py-32 px-8 relative bg-white/[0.02]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-5xl font-bold mb-6">Projeler ve Yarışmalar</h2>
-            <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full" />
-          </div>
-
-          {/* TABS */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-16">
-            {tabs.map((tab, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors duration-300 outline-none ${
-                  activeTab === index 
-                    ? "text-white" 
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <span className="relative z-10">{tab}</span>
-                {activeTab === index && (
-                  <motion.div
-                    layoutId="activeProjectTab"
-                    className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
-                    transition={{ type: "spring", duration: 0.6 }}
-                  />
-                )}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* TAB CONTENT */}
-          <div className="relative min-h-[300px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="w-full"
-              >
-                {projectsData.filter(p => p.tabId === activeTab).length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {projectsData.filter(p => p.tabId === activeTab).map((project) => {
-                      const IconComponent = project.icon ? IconMap[project.icon] : Briefcase;
-                      return (
-                        <Link href={`/projects/${project.id}`} key={project.id} className="block h-full">
-                          <motion.div
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.03 }}
-                            className="group p-8 h-full rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md relative overflow-hidden hover:shadow-[0_10px_30px_rgba(37,99,235,0.2)]"
-                          >
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="relative z-10 flex flex-col h-full">
-                              <div className="flex justify-between items-start mb-6">
-                                <IconComponent className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
-                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:border-white/30 transition-colors">
-                                  {project.year}
-                                </span>
-                              </div>
-                              <h3 className="text-xl font-semibold mb-3 text-slate-200 group-hover:text-white transition-colors">{project.title}</h3>
-                              <p className="text-slate-400 text-sm leading-relaxed flex-grow">{project.desc}</p>
-                            </div>
-                          </motion.div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center h-48 border border-dashed border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
-                    <p className="text-slate-400 text-lg">Bu sekmenin içeriği henüz tasarlanmamıştır.</p>
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 4. CONTACT SECTION */}
-      <section id="contact" className="py-32 px-8 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
-          className="max-w-3xl mx-auto text-center relative z-10"
-        >
-          <h2 className="text-4xl sm:text-6xl font-bold mb-8">Birlikte Çalışalım</h2>
-          <p className="text-xl text-slate-400 mb-12">
-            Yeni bir proje fikriniz mi var veya sadece merhaba mı demek istiyorsunuz? İletişime geçmekten çekinmeyin!
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:hello@example.com"
-              className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-600 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
-            >
-              <Mail className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-slate-800 hover:border-slate-800 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
-            >
-              <FileCode className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-700 hover:border-blue-700 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
-            >
-              <Briefcase className="w-6 h-6" />
-            </motion.a>
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-24 text-slate-500 text-sm"
+        {/* 2.5. ROKET TAKIMI SECTION */}
+        <section id="roket" className="py-32 px-8 relative bg-white/[0.01]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+            className="max-w-5xl mx-auto"
           >
-            © {new Date().getFullYear()} Can Kagar. Tüm hakları saklıdır.
-          </motion.p>
-        </motion.div>
-      </section>
+            <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
+              <div className="w-full md:w-1/2">
+                <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-slate-100">Bozdoğan Roket Takımı</h2>
+                <div className="w-20 h-1 bg-red-600 mb-8 rounded-full" />
+                <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                  Bozdoğan Roket Takımı bünyesinde yer alarak havacılık ve uzay teknolojileri alanında önemli projelere imza attık. Takım içindeki görevim ve çalışmalarım sayesinde mühendislik pratiğimi ve takım çalışması becerilerimi geliştirdim.
+                </p>
+                <p className="text-slate-400 text-lg leading-relaxed">
+                  Yüksek irtifa roket sistemleri tasarımı, aviyonik sistemler ve yazılım geliştirme süreçlerinde aktif rol alarak, vizyonumu uzaya taşıyorum.
+                </p>
+              </div>
+              <div
+                onClick={() => setIsImageFullscreen(true)}
+                className="w-full md:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-zoom-in group"
+              >
+                <Image
+                  src="/Bir başlık ekleyin.png"
+                  alt="Bozdoğan Roket Takımı"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-500 pointer-events-none">
+                    Büyütmek için tıkla
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* 3. PROJECTS SECTION */}
+        <section id="projects" className="py-32 px-8 relative bg-white/[0.02]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="max-w-6xl mx-auto"
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-5xl font-bold mb-6">Projeler ve Yarışmalar</h2>
+              <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full" />
+            </div>
+
+            {/* TABS */}
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-16">
+              {tabs.map((tab, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors duration-300 outline-none ${activeTab === index
+                      ? "text-white"
+                      : "text-slate-400 hover:text-slate-200"
+                    }`}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <span className="relative z-10">{tab}</span>
+                  {activeTab === index && (
+                    <motion.div
+                      layoutId="activeProjectTab"
+                      className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
+                      transition={{ type: "spring", duration: 0.6 }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* TAB CONTENT */}
+            <div className="relative min-h-[300px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="w-full"
+                >
+                  {projectsData.filter(p => p.tabId === activeTab).length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      {projectsData.filter(p => p.tabId === activeTab).map((project) => {
+                        const IconComponent = project.icon ? IconMap[project.icon] : Briefcase;
+                        return (
+                          <Link href={`/projects/${project.id}`} key={project.id} className="block h-full">
+                            <motion.div
+                              variants={itemVariants}
+                              whileHover={{ scale: 1.03 }}
+                              className="group p-8 h-full rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md relative overflow-hidden hover:shadow-[0_10px_30px_rgba(37,99,235,0.2)]"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="relative z-10 flex flex-col h-full">
+                                <div className="flex justify-between items-start mb-6">
+                                  <IconComponent className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
+                                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:border-white/30 transition-colors">
+                                    {project.year}
+                                  </span>
+                                </div>
+                                <h3 className="text-xl font-semibold mb-3 text-slate-200 group-hover:text-white transition-colors">{project.title}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed flex-grow">{project.desc}</p>
+                              </div>
+                            </motion.div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center h-48 border border-dashed border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                      <p className="text-slate-400 text-lg">Bu sekmenin içeriği henüz tasarlanmamıştır.</p>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* 4. CONTACT SECTION */}
+        <section id="contact" className="py-32 px-8 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={sectionVariants}
+            className="max-w-3xl mx-auto text-center relative z-10"
+          >
+            <h2 className="text-4xl sm:text-6xl font-bold mb-8">Birlikte Çalışalım</h2>
+            <p className="text-xl text-slate-400 mb-12">
+              Yeni bir proje fikriniz mi var veya sadece merhaba mı demek istiyorsunuz? İletişime geçmekten çekinmeyin!
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <motion.a
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                href="mailto:hello@example.com"
+                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-600 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+              >
+                <Mail className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-slate-800 hover:border-slate-800 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+              >
+                <FileCode className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-700 hover:border-blue-700 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+              >
+                <Briefcase className="w-6 h-6" />
+              </motion.a>
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-24 text-slate-500 text-sm"
+            >
+              © {new Date().getFullYear()} Can Kagar. Tüm hakları saklıdır.
+            </motion.p>
+          </motion.div>
+        </section>
       </div>
     </>
   );

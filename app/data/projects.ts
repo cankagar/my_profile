@@ -60,9 +60,23 @@ export const projectsData: ProjectData[] = [
   {
     id: "fll-2018",
     tabId: 0,
-    title: "FLL",
+    title: "FLL (First LEGO League) 2018 – Hidrodinamik: Suyun Yolculuğu",
     year: "2018",
     desc: "FIRST LEGO League ulusal turnuvaları ve projeleri.",
+    longDesc: [
+      "2018 yılında katıldığım ilk yarışma olan FIRST LEGO League Challenge (FLL) “Hidrodinamik: Suyun Yolculuğu” 14. sezonu, proje ve yarışma dünyasına attığım ilk adım oldu. Türkiye’de Bilim Kahramanları Derneği tarafından yürütülen bu turnuva; gençlerin bilim, teknoloji ve mühendislik alanlarında üretim yapmalarını teşvik eden uluslararası bir organizasyondur.",
+      "PayaSTEM takımıyla katıldığımız bu süreçte haftalık çalışmalarla robot tasarımı ve programlama üzerine yoğunlaştık. Takımdaki görevim kod yazımıydı; robotun görevleri en verimli şekilde tamamlamasını sağlayacak algoritmaları geliştirdim. Aynı zamanda saha içerisinde görevler tamamlandıktan sonra robotun parça değişimlerini hızlıca yaparak robotu yeni görevler için tekrar sahaya hazırladım. Bu rol, zaman yönetimi ve dikkat açısından kritik bir sorumluluk üstlenmemi sağladı.",
+      "Bu yarışma, benim için sadece teknik beceriler kazandığım bir deneyim değil; aynı zamanda takım çalışması, problem çözme ve üretim odaklı düşünme becerilerimi geliştirdiğim ilk önemli süreç oldu. Katıldığım ilk yarışma ve kazandığım ilk ödül olması nedeniyle benim için ayrı bir anlam taşımaktadır.",
+      "Yarışma sonrasında elde ettiğimiz başarı basına da yansıdı. Haberde şu ifadelere yer verildi:",
+      "“FLL (First LEGO League) tarafından gerçekleştirilen ‘Hidrodinamik: Suyun Yolculuğu’ temalı 14. sezon turnuvalarında payaSTEM takımı ‘En İyi Programlama Ödülü’nü kazandı. PayaSTEM’in başarılarıyla gurur duyduğunu belirten Payas Belediye Başkanı Bekir Altan, öğrencilerin bu başarısının disiplinli çalışmanın bir sonucu olduğunu ifade etti.”",
+      "Bu süreç sonunda geliştirdiğimiz robot ve yazılım ile En İyi Programlama Ödülü’ne layık görülmemiz, hem takımımız hem de benim için unutulmaz bir başlangıç oldu."
+    ],
+    logo: "/FLL.png",
+    gallery: [
+      "/Hydrodynamics_Logo.jpg",
+      "/fll (2).jpg",
+      "/fll.jpg"
+    ],
     icon: "Code2",
   },
 

@@ -1,15 +1,35 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, ChevronDown, Code2, Rocket, Palette, Globe, Briefcase, FileCode } from "lucide-react";
-import Link from "next/link";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { Mail, ChevronDown, Code2, Rocket, Palette, Globe, Briefcase, FileCode, Bot, HeartHandshake } from "lucide-react";
 import Image from "next/image";
-import Threads from './Threads';
+import Link from "next/link";
+import { projectsData } from "./data/projects";
+
+const IconMap: Record<string, React.ElementType> = {
+  Rocket,
+  Code2,
+  Palette,
+  Globe,
+  Briefcase,
+  Bot,
+  HeartHandshake
+};
+import dynamic from 'next/dynamic';
+const Threads = dynamic(() => import('./Threads'), { ssr: false });
 
 export default function Portfolio() {
   const [loading, setLoading] = useState(true);
   const [isImageFullscreen, setIsImageFullscreen] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    "Robotik ve Mühendislik Yarışmaları",
+    "Araştırma ve TÜBİTAK Projeleri",
+    "Teknofest ve Roket Çalışmaları",
+    "Uluslararası ve Sosyal Katkı"
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,12 +38,12 @@ export default function Portfolio() {
     return () => clearTimeout(timer);
   }, []);
 
-  const sectionVariants: any = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const containerVariants: any = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -33,17 +53,12 @@ export default function Portfolio() {
     },
   };
 
-  const itemVariants: any = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const projects = [
-    { title: "E-Ticaret Platformu", desc: "Modern ve ölçeklenebilir online alışveriş deneyimi.", icon: <Rocket className="w-8 h-8 mb-4 text-blue-400" /> },
-    { title: "Kişisel Portfolyo", desc: "Framer Motion ile geliştirilmiş interaktif portfolyo.", icon: <Palette className="w-8 h-8 mb-4 text-purple-400" /> },
-    { title: "SaaS Dashboard", desc: "Kapsamlı analiz ve yönetim paneli.", icon: <Code2 className="w-8 h-8 mb-4 text-emerald-400" /> },
-    { title: "Global Uygulama", desc: "Çoklu dil destekli global çapta uygulama.", icon: <Globe className="w-8 h-8 mb-4 text-pink-400" /> },
-  ];
+
 
   return (
     <>
@@ -130,8 +145,8 @@ export default function Portfolio() {
             </span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
-            Geleceği Kodluyorum
+          <motion.h1 variants={itemVariants} className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tighter mb-8 font-sans bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
+            Cn KGR
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -177,7 +192,7 @@ export default function Portfolio() {
                 Yazılım dünyasına olan tutkum, her gün yeni bir şeyler öğrenmemi ve kendimi geliştirmemi sağlıyor. Karmaşık problemleri basit ve zarif çözümlere dönüştürmeyi seviyorum.
               </p>
               <p className="text-slate-400 text-lg leading-relaxed">
-                Modern frontend framework'leri ve animasyon kütüphaneleri kullanarak sıradan siteleri akılda kalıcı deneyimlere çevirmek en büyük uzmanlık alanım. Her zaman daha iyisini üretmek için çalışıyorum.
+                Modern frontend framework&apos;leri ve animasyon kütüphaneleri kullanarak sıradan siteleri akılda kalıcı deneyimlere çevirmek en büyük uzmanlık alanım. Her zaman daha iyisini üretmek için çalışıyorum.
               </p>
             </div>
             <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
@@ -248,27 +263,82 @@ export default function Portfolio() {
           variants={containerVariants}
           className="max-w-6xl mx-auto"
         >
-          <div className="text-center mb-20">
-            <h2 className="text-3xl sm:text-5xl font-bold mb-6">Öne Çıkan Projeler</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6">Projeler ve Yarışmalar</h2>
             <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <motion.div
+          {/* TABS */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-16">
+            {tabs.map((tab, index) => (
+              <motion.button
                 key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md relative overflow-hidden"
+                onClick={() => setActiveTab(index)}
+                className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors duration-300 outline-none ${
+                  activeTab === index 
+                    ? "text-white" 
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  {project.icon}
-                  <h3 className="text-xl font-semibold mb-3 text-slate-200">{project.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{project.desc}</p>
-                </div>
-              </motion.div>
+                <span className="relative z-10">{tab}</span>
+                {activeTab === index && (
+                  <motion.div
+                    layoutId="activeProjectTab"
+                    className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
+                    transition={{ type: "spring", duration: 0.6 }}
+                  />
+                )}
+              </motion.button>
             ))}
+          </div>
+
+          {/* TAB CONTENT */}
+          <div className="relative min-h-[300px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full"
+              >
+                {projectsData.filter(p => p.tabId === activeTab).length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {projectsData.filter(p => p.tabId === activeTab).map((project) => {
+                      const IconComponent = project.icon ? IconMap[project.icon] : Briefcase;
+                      return (
+                        <Link href={`/projects/${project.id}`} key={project.id} className="block h-full">
+                          <motion.div
+                            variants={itemVariants}
+                            whileHover={{ scale: 1.03 }}
+                            className="group p-8 h-full rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md relative overflow-hidden hover:shadow-[0_10px_30px_rgba(37,99,235,0.2)]"
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative z-10 flex flex-col h-full">
+                              <div className="flex justify-between items-start mb-6">
+                                <IconComponent className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
+                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:border-white/30 transition-colors">
+                                  {project.year}
+                                </span>
+                              </div>
+                              <h3 className="text-xl font-semibold mb-3 text-slate-200 group-hover:text-white transition-colors">{project.title}</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed flex-grow">{project.desc}</p>
+                            </div>
+                          </motion.div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center h-48 border border-dashed border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                    <p className="text-slate-400 text-lg">Bu sekmenin içeriği henüz tasarlanmamıştır.</p>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </section>

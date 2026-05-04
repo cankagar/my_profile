@@ -51,7 +51,7 @@ export default function Gallery({ images }: GalleryProps) {
           <div
             key={idx}
             onClick={() => setSelectedIndex(idx)}
-            className="group relative aspect-[4/3] bg-white/5 rounded-2xl overflow-hidden cursor-pointer border border-white/10 transition-all duration-300 ease-in-out shadow-sm hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)]"
+            className="group relative aspect-[4/3] bg-bg-secondary rounded-2xl overflow-hidden cursor-pointer border border-border transition-all duration-300 ease-in-out shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"
           >
             <Image
               src={img}
@@ -59,7 +59,7 @@ export default function Gallery({ images }: GalleryProps) {
               fill
               className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
           </div>
         ))}
       </div>
@@ -72,13 +72,13 @@ export default function Gallery({ images }: GalleryProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-overlay backdrop-blur-sm p-4 md:p-8"
             onClick={() => setSelectedIndex(null)}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-6 right-6 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-colors"
+              className="absolute top-6 right-6 z-50 p-2 bg-white/20 hover:bg-white/30 rounded-full text-white backdrop-blur-md transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -86,13 +86,13 @@ export default function Gallery({ images }: GalleryProps) {
             {/* Navigation Buttons */}
             <button
               onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-              className="absolute left-4 md:left-8 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-colors"
+              className="absolute left-4 md:left-8 z-50 p-3 bg-white/20 hover:bg-white/30 rounded-full text-white backdrop-blur-md transition-colors"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); handleNext(); }}
-              className="absolute right-4 md:right-8 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-colors"
+              className="absolute right-4 md:right-8 z-50 p-3 bg-white/20 hover:bg-white/30 rounded-full text-white backdrop-blur-md transition-colors"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

@@ -69,13 +69,13 @@ export default function Portfolio() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-bg-loader"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 tracking-widest"
+              className="text-7xl font-bold text-accent tracking-widest"
             >
               CK
             </motion.div>
@@ -90,7 +90,7 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsImageFullscreen(false)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-overlay p-4 cursor-zoom-out"
           >
             <motion.div
               initial={{ scale: 0.8 }}
@@ -117,21 +117,21 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      <div className={`min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500/30 font-sans ${loading ? 'overflow-hidden h-screen' : ''}`}>
+      <div className={`min-h-screen bg-bg-primary text-text-primary font-sans ${loading ? 'overflow-hidden h-screen' : ''}`}>
         {/* 1. HERO SECTION */}
         <section className="relative flex flex-col items-center justify-center min-h-screen p-8 overflow-hidden">
           {/* Threads Background */}
           <div className="absolute inset-0 z-0 pointer-events-auto" style={{ width: '100%', height: '100%' }}>
-            <Threads
+            {/* <Threads
               amplitude={1}
               distance={0}
               enableMouseInteraction
-            />
+            /> */}
           </div>
 
-          {/* Background gradient effects */}
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 mix-blend-screen" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] -z-10 mix-blend-screen" />
+          {/* Subtle background accent glow */}
+          <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-accent/[0.04] rounded-full blur-[150px] -z-10" />
+          <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-[120px] -z-10" />
 
           <motion.div
             initial="hidden"
@@ -140,24 +140,24 @@ export default function Portfolio() {
             className="z-10 text-center max-w-3xl"
           >
             <motion.div variants={itemVariants} className="mb-6 inline-block">
-              <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium tracking-wide text-blue-300 backdrop-blur-md">
+              <span className="px-4 py-2 rounded-full bg-accent-light border border-accent/20 text-sm font-medium tracking-wide text-accent">
                 Merhaba, ben Can Kagar 👋
               </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tighter mb-8 font-sans bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
+            <motion.h1 variants={itemVariants} className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tighter mb-8 font-sans text-text-primary">
               Cn KGR
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-text-muted mb-12 max-w-2xl mx-auto leading-relaxed">
               Modern web teknolojileri ile kullanıcı odaklı, etkileşimli ve estetik dijital deneyimler yaratıyorum. Her pikselde mükemmelliği hedefliyorum.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="#contact" className="px-8 py-4 w-full sm:w-auto rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1">
+              <a href="#contact" className="px-8 py-4 w-full sm:w-auto rounded-full bg-text-primary hover:bg-text-secondary text-text-inverse font-semibold transition-all hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:-translate-y-1">
                 İletişime Geç
               </a>
-              <a href="#projects" className="px-8 py-4 w-full sm:w-auto rounded-full bg-white/5 border border-white/10 hover:bg-white/10 font-semibold transition-all hover:-translate-y-1 backdrop-blur-md">
+              <a href="#projects" className="px-8 py-4 w-full sm:w-auto rounded-full bg-transparent border border-border hover:border-text-primary font-semibold transition-all hover:-translate-y-1 text-text-primary">
                 Projeleri Gör
               </a>
             </motion.div>
@@ -170,7 +170,7 @@ export default function Portfolio() {
             className="absolute bottom-10 animate-bounce"
           >
             <a href="#about" aria-label="Aşağı kaydır">
-              <ChevronDown className="w-8 h-8 text-slate-500 hover:text-slate-300 transition-colors" />
+              <ChevronDown className="w-8 h-8 text-text-subtle hover:text-text-primary transition-colors" />
             </a>
           </motion.div>
         </section>
@@ -186,12 +186,12 @@ export default function Portfolio() {
           >
             <div className="flex flex-col md:flex-row gap-16 items-center">
               <div className="w-full md:w-1/2">
-                <h2 className="text-3xl sm:text-5xl font-bold mb-6">Hakkımda : </h2>
-                <div className="w-20 h-1 bg-blue-600 mb-8 rounded-full" />
-                <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-text-primary">Hakkımda : </h2>
+                <div className="w-20 h-1 bg-accent mb-8 rounded-full" />
+                <p className="text-text-muted text-lg leading-relaxed mb-6">
                   Yazılım dünyasına olan tutkum, her gün yeni bir şeyler öğrenmemi ve kendimi geliştirmemi sağlıyor. Karmaşık problemleri basit ve zarif çözümlere dönüştürmeyi seviyorum.
                 </p>
-                <p className="text-slate-400 text-lg leading-relaxed">
+                <p className="text-text-muted text-lg leading-relaxed">
                   Modern frontend framework&apos;leri ve animasyon kütüphaneleri kullanarak sıradan siteleri akılda kalıcı deneyimlere çevirmek en büyük uzmanlık alanım. Her zaman daha iyisini üretmek için çalışıyorum.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function Portfolio() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
-                    className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center font-medium hover:bg-white/10 transition-colors cursor-default"
+                    className="p-4 rounded-2xl bg-bg-secondary border border-border text-center font-medium hover:bg-bg-tertiary hover:border-border-hover transition-colors cursor-default text-text-secondary"
                   >
                     {skill}
                   </motion.div>
@@ -214,7 +214,7 @@ export default function Portfolio() {
         </section>
 
         {/* 2.5. ROKET TAKIMI SECTION */}
-        <section id="roket" className="py-32 px-8 relative bg-white/[0.01]">
+        <section id="roket" className="py-32 px-8 relative bg-bg-secondary">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -224,18 +224,18 @@ export default function Portfolio() {
           >
             <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
               <div className="w-full md:w-1/2">
-                <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-slate-100">Bozdoğan Roket Takımı</h2>
-                <div className="w-20 h-1 bg-red-600 mb-8 rounded-full" />
-                <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-text-primary">Bozdoğan Roket Takımı</h2>
+                <div className="w-20 h-1 bg-accent mb-8 rounded-full" />
+                <p className="text-text-muted text-lg leading-relaxed mb-6">
                   Bozdoğan Roket Takımı bünyesinde yer alarak havacılık ve uzay teknolojileri alanında önemli projelere imza attık. Takım içindeki görevim ve çalışmalarım sayesinde mühendislik pratiğimi ve takım çalışması becerilerimi geliştirdim.
                 </p>
-                <p className="text-slate-400 text-lg leading-relaxed">
+                <p className="text-text-muted text-lg leading-relaxed">
                   Yüksek irtifa roket sistemleri tasarımı, aviyonik sistemler ve yazılım geliştirme süreçlerinde aktif rol alarak, vizyonumu uzaya taşıyorum.
                 </p>
               </div>
               <div
                 onClick={() => setIsImageFullscreen(true)}
-                className="w-full md:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-zoom-in group"
+                className="w-full md:w-1/2 relative rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] cursor-zoom-in group"
               >
                 <Image
                   src="/Bir başlık ekleyin.png"
@@ -244,8 +244,8 @@ export default function Portfolio() {
                   height={400}
                   className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 bg-text-primary/70 text-text-inverse px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-500 pointer-events-none text-sm">
                     Büyütmek için tıkla
                   </span>
                 </div>
@@ -255,7 +255,7 @@ export default function Portfolio() {
         </section>
 
         {/* 3. PROJECTS SECTION */}
-        <section id="projects" className="py-32 px-8 relative bg-white/[0.02]">
+        <section id="projects" className="py-32 px-8 relative">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -264,8 +264,8 @@ export default function Portfolio() {
             className="max-w-6xl mx-auto"
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-5xl font-bold mb-6">Projeler ve Yarışmalar</h2>
-              <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full" />
+              <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-text-primary">Projeler ve Yarışmalar</h2>
+              <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
             </div>
 
             {/* TABS */}
@@ -275,8 +275,8 @@ export default function Portfolio() {
                   key={index}
                   onClick={() => setActiveTab(index)}
                   className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-colors duration-300 outline-none ${activeTab === index
-                      ? "text-white"
-                      : "text-slate-400 hover:text-slate-200"
+                    ? "text-text-primary"
+                    : "text-text-subtle hover:text-text-secondary"
                     }`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -285,7 +285,7 @@ export default function Portfolio() {
                   {activeTab === index && (
                     <motion.div
                       layoutId="activeProjectTab"
-                      className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
+                      className="absolute inset-0 bg-accent-light rounded-full border border-accent/30"
                       transition={{ type: "spring", duration: 0.6 }}
                     />
                   )}
@@ -313,18 +313,18 @@ export default function Portfolio() {
                             <motion.div
                               variants={itemVariants}
                               whileHover={{ scale: 1.03 }}
-                              className="group p-8 h-full rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md relative overflow-hidden hover:shadow-[0_10px_30px_rgba(37,99,235,0.2)]"
+                              className="group p-8 h-full rounded-3xl bg-bg-card border border-border hover:border-accent/40 transition-all duration-300 relative overflow-hidden hover:shadow-[var(--shadow-card-hover)]"
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="absolute inset-0 bg-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                               <div className="relative z-10 flex flex-col h-full">
                                 <div className="flex justify-between items-start mb-6">
-                                  <IconComponent className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
-                                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10 group-hover:border-white/30 transition-colors">
+                                  <IconComponent className="w-8 h-8 text-accent group-hover:text-accent-hover transition-colors" />
+                                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-bg-secondary text-text-muted border border-border group-hover:border-accent/30 transition-colors">
                                     {project.year}
                                   </span>
                                 </div>
-                                <h3 className="text-xl font-semibold mb-3 text-slate-200 group-hover:text-white transition-colors">{project.title}</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed flex-grow">{project.desc}</p>
+                                <h3 className="text-xl font-semibold mb-3 text-text-primary group-hover:text-accent-hover transition-colors">{project.title}</h3>
+                                <p className="text-text-muted text-sm leading-relaxed flex-grow">{project.desc}</p>
                               </div>
                             </motion.div>
                           </Link>
@@ -332,8 +332,8 @@ export default function Portfolio() {
                       })}
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center h-48 border border-dashed border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
-                      <p className="text-slate-400 text-lg">Bu sekmenin içeriği henüz tasarlanmamıştır.</p>
+                    <div className="flex items-center justify-center h-48 border border-dashed border-border rounded-3xl bg-bg-secondary">
+                      <p className="text-text-subtle text-lg">Bu sekmenin içeriği henüz tasarlanmamıştır.</p>
                     </div>
                   )}
                 </motion.div>
@@ -343,8 +343,8 @@ export default function Portfolio() {
         </section>
 
         {/* 4. CONTACT SECTION */}
-        <section id="contact" className="py-32 px-8 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+        <section id="contact" className="py-32 px-8 relative overflow-hidden bg-bg-secondary">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/[0.03] rounded-full blur-[150px] -z-10 pointer-events-none" />
 
           <motion.div
             initial="hidden"
@@ -353,8 +353,8 @@ export default function Portfolio() {
             variants={sectionVariants}
             className="max-w-3xl mx-auto text-center relative z-10"
           >
-            <h2 className="text-4xl sm:text-6xl font-bold mb-8">Birlikte Çalışalım</h2>
-            <p className="text-xl text-slate-400 mb-12">
+            <h2 className="text-4xl sm:text-6xl font-bold mb-8 text-text-primary">Birlikte Çalışalım</h2>
+            <p className="text-xl text-text-muted mb-12">
               Yeni bir proje fikriniz mi var veya sadece merhaba mı demek istiyorsunuz? İletişime geçmekten çekinmeyin!
             </p>
 
@@ -363,7 +363,7 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:hello@example.com"
-                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-600 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+                className="p-4 rounded-full bg-bg-card border border-border hover:bg-accent hover:border-accent transition-all text-text-muted hover:text-text-inverse shadow-[var(--shadow-card)]"
               >
                 <Mail className="w-6 h-6" />
               </motion.a>
@@ -373,7 +373,7 @@ export default function Portfolio() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-slate-800 hover:border-slate-800 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+                className="p-4 rounded-full bg-bg-card border border-border hover:bg-text-primary hover:border-text-primary transition-all text-text-muted hover:text-text-inverse shadow-[var(--shadow-card)]"
               >
                 <FileCode className="w-6 h-6" />
               </motion.a>
@@ -383,7 +383,7 @@ export default function Portfolio() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-blue-700 hover:border-blue-700 transition-all text-slate-300 hover:text-white backdrop-blur-sm"
+                className="p-4 rounded-full bg-bg-card border border-border hover:bg-accent hover:border-accent transition-all text-text-muted hover:text-text-inverse shadow-[var(--shadow-card)]"
               >
                 <Briefcase className="w-6 h-6" />
               </motion.a>
@@ -393,7 +393,7 @@ export default function Portfolio() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-24 text-slate-500 text-sm"
+              className="mt-24 text-text-subtle text-sm"
             >
               © {new Date().getFullYear()} Can Kagar. Tüm hakları saklıdır.
             </motion.p>

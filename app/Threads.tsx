@@ -117,7 +117,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     }
 
     float colorVal = 1.0 - line_strength;
-    fragColor = vec4(uColor * colorVal, colorVal);
+    fragColor = vec4(uColor, colorVal);
 }
 
 void main() {
@@ -126,7 +126,7 @@ void main() {
 `;
 
 const Threads: React.FC<ThreadsProps> = ({
-  color = [1, 1, 1],
+  color = [0, 0, 0], // Siyah, beyaz arka planda yüksek kalite hissi verir
   amplitude = 1,
   distance = 0,
   enableMouseInteraction = false,

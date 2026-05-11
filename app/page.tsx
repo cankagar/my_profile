@@ -122,11 +122,11 @@ export default function Portfolio() {
         <section className="relative flex flex-col items-center justify-center min-h-screen p-8 overflow-hidden">
           {/* Threads Background */}
           <div className="absolute inset-0 z-0 pointer-events-auto" style={{ width: '100%', height: '100%' }}>
-            {/* <Threads
+            <Threads
               amplitude={1}
               distance={0}
               enableMouseInteraction
-            /> */}
+            />
           </div>
 
           {/* Subtle background accent glow */}
